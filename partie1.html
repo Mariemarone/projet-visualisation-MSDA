@@ -27,10 +27,10 @@
             		</select> <br> <br>
                 Nombre d'heures:<input type="number" name="heures" id="heures"><br> <br>
                 <p>A t-il effectué des heures supplémentaires? </p>
-                <input type="radio" id="oui" name="gender" value="oui">
+                <input type="radio" id="oui" name="gender" value="oui" onchange="cocher();">
                 <label for="oui">oui</label>
                 <br>
-                <input type="radio" id="non" name="gender" value="non">
+                <input type="radio" id="non" name="gender" value="non" onchange="cocher();">
                 <label for="non">non</label>
                 <br>
                 heures sup: <input type="number" name="heuressup" id="heuressup"><br> <br>
@@ -65,6 +65,10 @@
 
 
     <script>
+        window.onload = function(){
+            document.getElementById('heuressup').disabled = true;
+        }
+
     	function afficher() {
             //recupérer les entrées
     		var prenom= document.getElementById('prenom').value;
@@ -197,9 +201,16 @@
             return salairenet;
         }
 
+        function cocher(){
+            if (document.getElementById('oui').checked == true){
+                document.getElementById('heuressup').disabled = false;
+            }else{
+                document.getElementById('heuressup').disabled = true;
+            }
+        }
         
     
     </script>
 
 </body>
-</html>S
+</html>
